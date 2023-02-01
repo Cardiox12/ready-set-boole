@@ -7,11 +7,14 @@
 typedef unsigned char byte_t;
 
 #define LSB 0x01
-#define clear_bits(x) x & LSB
+#define CLEAR_BITS(x) x & LSB
+#define GET_BIT(x, n) (x >> n) & LSB
 
 //                                                       |  Res  | Carry |.....................EMPTY.....................| 
 // Result and Carry is encoded in 2 bits unsigned char : |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |
-#define MAKE_RESULT(sum, carry) (byte_t)(sum | ((carry) << 1))
+#define MAKE_RESULT(result, carry) (byte_t)(result | ((carry) << 1))
+#define GET_CARRY(result) result >> 1
+#define GET_RESULT(result) result & LSB
 
 // Bit stream
 
