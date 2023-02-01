@@ -10,6 +10,11 @@ typedef unsigned char byte_t;
 #define CLEAR_BITS(x) x & LSB
 #define GET_BIT(x, n) (x >> n) & LSB
 
+typedef struct {
+    int32_t res;
+    byte_t carry;
+}       res_t;
+
 //                                                       |  Res  | Carry |.....................EMPTY.....................| 
 // Result and Carry is encoded in 2 bits unsigned char : |   0   |   0   |   0   |   0   |   0   |   0   |   0   |   0   |
 #define MAKE_RESULT(result, carry) (byte_t)(result | ((carry) << 1))
